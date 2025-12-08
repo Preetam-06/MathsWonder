@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Golden Ratio Music Analyzer</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Golden Ratio Music Analyzer</h1>
+        <p>Visualizing music structure using mathematics</p>
+
+        <div class="wave-container">
+            <!-- Golden Ratio Line -->
+            <div class="golden-line">
+                <span>0.618</span>
+            </div>
+
+            <!-- Fake Waveform -->
+            <div class="waveform">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+
+        <p class="note">
+            Golden Ratio position highlighted on the music waveform
+        </p>
+
+        <h2>Live Golden Ratio Music Analyzer</h2>
+        <p>Enter the duration of your song to get suggestions for optimal Golden Ratio points.</p>
+        <input id="durationInput" type="number" placeholder="Song duration (seconds)">
+        <button id="suggestBtn">Suggest Golden Point</button>
+        <p id="advisorResult"></p>
+
+        <div class="footer">
+            &copy; 2025 MathsWonder
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

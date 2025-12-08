@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
+.container {
+    width: 80%;
+    max-width: 900px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+p {
+    opacity: 0.85;
+    margin-bottom: 25px;
+}
+
+.wave-container {
+    position: relative;
+    height: 220px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* Golden Ratio Line */
+.golden-line {
+    position: absolute;
+    left: 61.8%;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: gold;
+    box-shadow: 0 0 15px gold;
+}
+
+.golden-line span {
+    position: absolute;
+    top: 10px;
+    left: -20px;
+    background: gold;
+    color: #000;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 5px;
+}
+
+/* Waveform */
+.waveform {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    height: 140px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+
+.bar {
+    width: 5%;
+    background: linear-gradient(to top, #00c6ff, #0072ff);
+    border-radius: 50px;
+    animation: pulse 1.5s infinite;
+}
+
+.bar:nth-child(odd) {
+    height: 45%;
+}
+
+.bar:nth-child(even) {
+    height: 80%;
+}
+
+/* Simple wave animation */
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+input, button {
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+.note {
+    margin-top: 20px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+.btn1{
+    background-color:#cebb10;
+    border: 0px;
+    border-radius: 12px;
+    padding:5px 5px;
+    color: black;
+    
+}
