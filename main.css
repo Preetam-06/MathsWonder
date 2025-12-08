@@ -1,60 +1,49 @@
-/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Segoe UI", system-ui, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-/* BODY */
 body {
-    min-height: 100vh;
-    background: radial-gradient(circle at top, #0b1a4a, #020617);
+    height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #e5e7eb;
-    padding: 15px;
+    color: #ffffff;
 }
 
-/* MAIN CONTAINER */
 .container {
-    width: 100%;
+    width: 80%;
     max-width: 900px;
-    background: rgba(0, 0, 0, 0.35);
-    border-radius: 16px;
-    padding: 22px;
     text-align: center;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
 }
 
-/* HEADINGS */
 h1 {
-    color: #c7d2fe;
-    margin-bottom: 8px;
-}
-
-h2 {
-    margin-top: 25px;
-    margin-bottom: 8px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
 }
 
 p {
     opacity: 0.85;
-    margin-bottom: 18px;
+    margin-bottom: 25px;
 }
 
-/* WAVE SECTION */
 .wave-container {
     position: relative;
     height: 220px;
     background: rgba(255, 255, 255, 0.08);
     border-radius: 12px;
-    padding: 16px;
+    padding: 20px;
     overflow: hidden;
 }
 
-/* GOLDEN RATIO LINE */
+/* Golden Ratio Line */
 .golden-line {
     position: absolute;
     left: 61.8%;
@@ -63,53 +52,37 @@ p {
     width: 3px;
     background: gold;
     box-shadow: 0 0 15px gold;
-    cursor: pointer;
 }
 
 .golden-line span {
     position: absolute;
     top: 10px;
-    left: -32px;
+    left: -20px;
     background: gold;
     color: #000;
-    font-size: 12px;
     font-weight: bold;
+    font-size: 12px;
     padding: 4px 8px;
-    border-radius: 6px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    border-radius: 5px;
 }
 
-/* Desktop Hover */
-.golden-line:hover span {
-    opacity: 1;
-}
-
-/* Mobile Tap */
-@media (max-width: 768px) {
-    .golden-line:active span {
-        opacity: 1;
-    }
-}
-
-/* WAVEFORM */
+/* Waveform */
 .waveform {
     position: absolute;
-    bottom: 16px;
-    left: 16px;
-    right: 16px;
-    height: 60%;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    height: 140px;
     display: flex;
     align-items: flex-end;
+    justify-content: space-around;
 }
 
-/* BARS */
 .bar {
-    flex: 1;
-    margin: 0 2px;
+    width: 5%;
     background: linear-gradient(to top, #00c6ff, #0072ff);
     border-radius: 50px;
-    animation: pulse 1.5s infinite ease-in-out;
+    animation: pulse 1.5s infinite;
 }
 
 .bar:nth-child(odd) {
@@ -120,61 +93,45 @@ p {
     height: 80%;
 }
 
-/* ANIMATION */
+/* Simple wave animation */
 @keyframes pulse {
     0% { opacity: 0.6; }
     50% { opacity: 1; }
     100% { opacity: 0.6; }
 }
-
-/* INPUTS */
-.input-row {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-input {
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    width: 220px;
+input, button {
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 6px;
+  border: none;
 }
 
 button {
-    padding: 10px 18px;
-    border-radius: 8px;
-    border: none;
-    background: #2563eb;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s ease;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
 }
-
-button:hover {
-    transform: scale(1.05);
+.note {
+    margin-top: 20px;
+    font-size: 14px;
+    opacity: 0.7;
 }
-
-/* FOOTER */
-.footer {
-    margin-top: 30px;
-    font-size: 12px;
-    opacity: 0.6;
+.btn1{
+    background-color:#cebb10;
+    border: 0px;
+    border-radius: 12px;
+    padding:5px 5px;
+    color: black;
+    
 }
-
-/* MOBILE TWEAKS */
+@media (max-width: 1024px) {
+  .container {
+    width: 90%;
+    padding: 25px;
+  }
+}
 @media (max-width: 600px) {
-    h1 {
-        font-size: 1.4rem;
-    }
-
-    .wave-container {
-        height: 180px;
-    }
-
-    input, button {
-        width: 100%;
-    }
+  body {
+    padding: 10px;
+  }
 }
