@@ -43,7 +43,11 @@ p {
     overflow: hidden;
 }
 
-/* Golden Ratio Line */
+
+/* ============================= */
+/* GOLDEN RATIO LINE (ANIMATED)  */
+/* ============================= */
+
 .golden-line {
     position: absolute;
     left: 61.8%;
@@ -52,12 +56,13 @@ p {
     width: 3px;
     background: gold;
     box-shadow: 0 0 15px gold;
+    animation: goldenGlow 2.2s ease-in-out infinite;
 }
 
 .golden-line span {
     position: absolute;
     top: 10px;
-    left: -20px;
+    left: -35px;
     background: gold;
     color: #000;
     font-weight: bold;
@@ -66,7 +71,26 @@ p {
     border-radius: 5px;
 }
 
-/* Waveform */
+@keyframes goldenGlow {
+    0% {
+        box-shadow: 0 0 6px gold;
+        opacity: 0.7;
+    }
+    50% {
+        box-shadow: 0 0 22px gold;
+        opacity: 1;
+    }
+    100% {
+        box-shadow: 0 0 6px gold;
+        opacity: 0.7;
+    }
+}
+
+
+/* ============================= */
+/* WAVEFORM (ANIMATED BARS)      */
+/* ============================= */
+
 .waveform {
     position: absolute;
     bottom: 20px;
@@ -79,10 +103,10 @@ p {
 }
 
 .bar {
-    width: 5%;
+    width: 3%;
     background: linear-gradient(to top, #00c6ff, #0072ff);
     border-radius: 50px;
-    animation: pulse 1.5s infinite;
+    animation: waveFlow 1.8s ease-in-out infinite;
 }
 
 .bar:nth-child(odd) {
@@ -93,45 +117,88 @@ p {
     height: 80%;
 }
 
-/* Simple wave animation */
-@keyframes pulse {
-    0% { opacity: 0.6; }
-    50% { opacity: 1; }
-    100% { opacity: 0.6; }
+/* Phase offsets (simulate moving sound) */
+.bar:nth-child(1)  { animation-delay: 0s; }
+.bar:nth-child(2)  { animation-delay: 0.1s; }
+.bar:nth-child(3)  { animation-delay: 0.2s; }
+.bar:nth-child(4)  { animation-delay: 0.3s; }
+.bar:nth-child(5)  { animation-delay: 0.4s; }
+.bar:nth-child(6)  { animation-delay: 0.5s; }
+.bar:nth-child(7)  { animation-delay: 0.6s; }
+.bar:nth-child(8)  { animation-delay: 0.7s; }
+.bar:nth-child(9)  { animation-delay: 0.8s; }
+.bar:nth-child(10) { animation-delay: 0.9s; }
+.bar:nth-child(11) { animation-delay: 1s; }
+.bar:nth-child(12) { animation-delay: 1.1s; }
+.bar:nth-child(13) { animation-delay: 1.2s; }
+.bar:nth-child(14) { animation-delay: 1.3s; }
+.bar:nth-child(15) { animation-delay: 1.4s; }
+.bar:nth-child(16) { animation-delay: 1.5s; }
+
+@keyframes waveFlow {
+    0% {
+        transform: scaleY(0.6);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scaleY(0.6);
+        opacity: 0.6;
+    }
 }
+
+
+/* ============================= */
+/* INPUT & BUTTON               */
+/* ============================= */
+
 input, button {
-  padding: 10px;
-  margin-right: 10px;
-  border-radius: 6px;
-  border: none;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 6px;
+    border: none;
 }
 
 button {
-  background: #2563eb;
-  color: white;
-  cursor: pointer;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
 }
+
 .note {
     margin-top: 20px;
     font-size: 14px;
-    opacity: 0.7;
+    opacity: 0.75;
 }
-.btn1{
-    background-color:#cebb10;
-    border: 0px;
-    border-radius: 12px;
-    padding:5px 5px;
-    color: black;
-    
-}
+
+
+/* ============================= */
+/* RESPONSIVE                   */
+/* ============================= */
+
 @media (max-width: 1024px) {
-  .container {
-    width: 90%;
-    padding: 25px;
-  }
+    .container {
+        width: 90%;
+        padding: 25px;
+    }
 }
+
 @media (max-width: 600px) {
-  body {
-    padding: 10px;
-  }
+    body {
+        padding: 10px;
+    }
+}
+
+/* ============================= */
+/* REDUCED MOTION SUPPORT       */
+/* ============================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .bar,
+    .golden-line {
+        animation: none;
+    }
 }
