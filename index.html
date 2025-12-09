@@ -1,62 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Golden Ratio Music Analyzer</title>
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>Golden Ratio Music Analyzer</h1>
-        <p>Visualizing music structure using mathematics</p>
+<div class="container">
+    <h1>Golden Ratio Music Analyzer</h1>
+    <p>Visualizing musical structure using proportional mathematics</p>
 
-        <div class="wave-container">
-            <!-- Golden Ratio Line -->
-            <div class="golden-line">
-                <span>0.618</span>
-            </div>
-
-            <!-- Fake Waveform -->
-            <div class="waveform">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
+    <div class="wave-container">
+        <!-- Golden Ratio Line -->
+        <div class="golden-line">
+            <span>Golden Point (61.8%)</span>
         </div>
 
-        <p class="note">
-            Golden Ratio position highlighted on the music waveform
-        </p>
-
-        <h2>Live Golden Ratio Music Analyzer</h2>
-        <p>Enter the duration of your song to get suggestions for optimal Golden Ratio points.</p>
-        <input id="durationInput" type="number" placeholder="Song duration (seconds)">
-        <button id="suggestBtn">Suggest Golden Point</button>
-        <p id="advisorResult"></p>
-
-        <div class="footer">
-            &copy; 2025 MathsWonder
+        <!-- Decorative waveform -->
+        <div class="waveform">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div>
         </div>
     </div>
-    
-    <script src="app.js"></script>
+
+    <p class="note">
+        The golden ratio point is a reference position where a musical change
+        may naturally feel balanced.
+    </p>
+
+    <h2>Golden Ratio Time Calculator</h2>
+    <p>Enter the total duration of a song to locate its golden ratio point.</p>
+
+    <input id="durationInput" type="number" placeholder="Song duration (seconds)">
+    <button id="suggestBtn">Find Golden Ratio Time</button>
+
+    <p id="advisorResult"></p>
+
+    <div class="footer">
+        &copy; 2025 MathsWonder
+    </div>
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
-
-
