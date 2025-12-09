@@ -1,35 +1,40 @@
+const GOLDEN = 0.618;
 
-const GOLDEN = 0.618
+// ===============================
+// CORE ANALYSIS
+// ===============================
 
 function analyzeSong(duration, events) {
-  const results = []
+  if (!duration || duration <= 0) return null;
 
-  events.forEach(e => {
-    const pos = e.time / duration
-    const dist = Math.abs(pos - GOLDEN)
+  const results = events.map(e => {
+    const position = e.time / duration;
+    const distance = Math.abs(position - GOLDEN);
 
-    results.push({
+    return {
       label: e.label,
-      time: e.time,
-      position: Number(pos.toFixed(3)),
-      distance: Number(dist.toFixed(3))
-    })
-  })
+      time: Number(e.time.toFixed(2)),
+      position: Number(position.toFixed(3)),
+      distance: Number(distance.toFixed(3))
+    };
+  });
 
   const closest = results.reduce((a, b) =>
     a.distance < b.distance ? a : b
-  )
+  );
 
-  const score = Number((1 - closest.distance).toFixed(3))
+  const score = Number(
+    Math.max(0, (1 - closest.distance / GOLDEN)).toFixed(3)
+  );
 
-  return { results, closest, score }
+  return { results, closest, score };
 }
 
 function suggestGoldenPoints(duration) {
   return {
     buildUp: Number((duration * 0.382).toFixed(2)),
     climax: Number((duration * GOLDEN).toFixed(2))
-  }
+  };
 }
 
 // ===============================
@@ -40,53 +45,60 @@ function suggestGoldenPoints(duration) {
 document.getElementById('suggestBtn').onclick = () => {
   const duration = Number(
     document.getElementById('durationInput').value
-  )
-  if (!duration) return
+  );
+  if (!duration || duration <= 0) return;
 
-  const points = suggestGoldenPoints(duration)
+  const points = suggestGoldenPoints(duration);
 
-  document.getElementById('advisorResult').innerHTML =
-    `🔹 Build-up: <b>${points.buildUp}s</b><br>
-     ⭐ Golden Ratio: <b>${points.climax}s</b>`
-}
+  document.getElementById('advisorResult').innerHTML = `
+    🔹 Build-up: <b>${points.buildUp} s</b><br>
+    ⭐ Golden Ratio Point: <b>${points.climax} s</b>
+  `;
+};
 
-// Analyzer mode (wave editor)
+// ===============================
+// WAVE ANALYZER
+// ===============================
+
 const wave = WaveSurfer.create({
   container: '#waveform',
   waveColor: '#3b82f6',
   progressColor: '#facc15',
   cursorColor: '#facc15',
   height: 150
-})
+});
 
-const goldenLine = document.getElementById('goldenLine')
+const goldenLine = document.getElementById('goldenLine');
 
-document.getElementById('audioUpload').addEventListener('change', (e) => {
-  const file = e.target.files[0]
-  if (!file) return
+document
+  .getElementById('audioUpload')
+  .addEventListener('change', (e) => {
 
-  wave.loadBlob(file)
+    const file = e.target.files[0];
+    if (!file) return;
 
-  wave.on('ready', () => {
-    const duration = wave.getDuration()
+    wave.loadBlob(file);
 
-    // Example events (replace with AI later)
-    const events = [
-      { label: "Intro End", time: duration * 0.15 },
-      { label: "Build-up", time: duration * 0.38 },
-      { label: "Drop", time: duration * 0.62 },
-      { label: "Outro", time: duration * 0.85 }
-    ]
+    wave.on('ready', () => {
+      const duration = wave.getDuration();
+      if (!duration || duration <= 0) return;
 
-    const { results, closest, score } =
-      analyzeSong(duration, events)
+      // Example structural events (manual / placeholder)
+      const events = [
+        { label: "Intro End", time: duration * 0.15 },
+        { label: "Build-up", time: duration * 0.38 },
+        { label: "Drop", time: duration * 0.62 },
+        { label: "Outro", time: duration * 0.85 }
+      ];
 
-    // Draw golden ratio line
-    const width = document.getElementById('waveform').clientWidth
-    goldenLine.style.left = (GOLDEN * width) + "px"
+      const analysis = analyzeSong(duration, events);
+      if (!analysis) return;
 
-    console.table(results)
-    console.log("Closest:", closest)
-    console.log("Golden Score:", score)
-  })
-})
+      // Golden line stays proportional
+      goldenLine.style.left = "61.8%";
+
+      console.table(analysis.results);
+      console.log("Closest Event:", analysis.closest);
+      console.log("Golden Alignment Score:", analysis.score);
+    });
+});
