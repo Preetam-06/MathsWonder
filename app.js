@@ -1,8 +1,6 @@
 const GOLDEN = 0.618;
 
-// ===============================
 // CORE ANALYSIS
-// ===============================
 
 function analyzeSong(duration, events) {
   if (!duration || duration <= 0) return null;
@@ -37,11 +35,8 @@ function suggestGoldenPoints(duration) {
   };
 }
 
-// ===============================
-// UI LOGIC
-// ===============================
+// UI
 
-// Advisor mode
 document.getElementById('suggestBtn').onclick = () => {
   const duration = Number(
     document.getElementById('durationInput').value
@@ -55,50 +50,3 @@ document.getElementById('suggestBtn').onclick = () => {
     ⭐ Golden Ratio Point: <b>${points.climax} s</b>
   `;
 };
-
-// ===============================
-// WAVE ANALYZER
-// ===============================
-
-const wave = WaveSurfer.create({
-  container: '#waveform',
-  waveColor: '#3b82f6',
-  progressColor: '#facc15',
-  cursorColor: '#facc15',
-  height: 150
-});
-
-const goldenLine = document.getElementById('goldenLine');
-
-document
-  .getElementById('audioUpload')
-  .addEventListener('change', (e) => {
-
-    const file = e.target.files[0];
-    if (!file) return;
-
-    wave.loadBlob(file);
-
-    wave.on('ready', () => {
-      const duration = wave.getDuration();
-      if (!duration || duration <= 0) return;
-
-      // Example structural events (manual / placeholder)
-      const events = [
-        { label: "Intro End", time: duration * 0.15 },
-        { label: "Build-up", time: duration * 0.38 },
-        { label: "Drop", time: duration * 0.62 },
-        { label: "Outro", time: duration * 0.85 }
-      ];
-
-      const analysis = analyzeSong(duration, events);
-      if (!analysis) return;
-
-      // Golden line stays proportional
-      goldenLine.style.left = "61.8%";
-
-      console.table(analysis.results);
-      console.log("Closest Event:", analysis.closest);
-      console.log("Golden Alignment Score:", analysis.score);
-    });
-});
