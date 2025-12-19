@@ -3,7 +3,7 @@ GOLDEN = 0.618
 def analyze_song(duration, events):
     """
     duration: total song time (seconds)
-    events: list of dicts -> {"label": str, "time": seconds}
+    
     """
     results = []
 
